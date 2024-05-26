@@ -8,7 +8,6 @@ export const getUsersWithPagination = async (req: Request, res: Response) => {
     if (!queryData.success)
         return res.status(400).json({message: fromError(queryData.error)});
     const users = await usersService.getUsersWithPagination(queryData.data);
-    //TODO: error handling
     return res.status(200).json({"users": users});
 }
 
@@ -17,8 +16,6 @@ export const getUsersByName = async (req: Request, res: Response) => {
     if (!queryData.success)
         return res.status(400).json({message: fromError(queryData.error)});
     const users = await usersService.getUsersByName(queryData.data.name);
-    console.log(users)
-    //TODO: error handling
     return res.status(200).json({"users": users});
 }
 
@@ -27,6 +24,10 @@ export const getUsersByEmail = async (req: Request, res: Response) => {
     if (!queryData.success)
         return res.status(400).json({message: fromError(queryData.error)});
     const users = await usersService.getUsersByEmail(queryData.data.email);
-        //TODO: error handling
     return res.status(200).json({"users": users});
+}
+
+export const updateUsersStatuses = (req: Request, res: Response) => {
+    const body = JSON.parse(req.body);
+    //TODO: implement validation and if valid, update using foreach
 }

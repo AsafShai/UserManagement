@@ -15,6 +15,10 @@ export const filterByEmailSchema = z.object({
   email: z.string().email(),
 });
 
+// export const updateUsersStatusesSchema = z.object({
+//   users: z.array({id: String, status: String}).
+// })
+
 export type User = {
   name: String;
   email: String;

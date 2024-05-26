@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import usersRoute from './routes/usersRoutes'
+import usersRoutes from './routes/usersRoutes'
+import groupsRoutes from './routes/groupsRoutes'
 import { PORT } from './config/config';
 import { connectMongoDb } from './config/dbConnect';
 
@@ -11,7 +12,8 @@ app.use(cors());
 
 connectMongoDb();
 
-app.use("/users", usersRoute);
+app.use("/users", usersRoutes);
+app.use("groups/", groupsRoutes);
 
 app.listen(PORT, () => {
     console.log(`server is running on port ${PORT} `)
